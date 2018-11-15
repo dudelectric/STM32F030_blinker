@@ -1,7 +1,34 @@
-//#include "stm32f0xx.h"
-//#include "stdint.h"
-//#include "delay.h"
-//
+#include "stm32f0xx.h"
+#include "stdint.h"
+#include "delay.h"
+
+#define MillisecondsIT 1e3
+volatile uint32_t Milliseconds = 0, Seconds = 0;
+
+void SysTick_Handler(void) {
+	Milliseconds++; //Increment millisecond variable
+	if (Milliseconds % 1000 == 999) { //If 1000 milliseconds have passed, increment seconds
+		Seconds++;
+	}
+}
+
+void delay_ms(uint32_t nTime) {
+	volatile uint32_t MSStart = Milliseconds;
+	while ((Milliseconds - MSStart) < nTime)
+		asm volatile("nop");
+}
+
+void delay_s(uint32_t nTime) {
+	volatile uint32_t Ss = Seconds;
+	while ((Seconds - Ss) < nTime)
+		asm volatile("nop");
+}
+void delay_init(void) {
+	SystemInit(); //Ensure CPU is running at correctly set clock speed
+	SystemCoreClockUpdate(); //Update SystemCoreClock variable to current clock speed
+	SysTick_Config(SystemCoreClock / MillisecondsIT); //Set up a systick interrupt every millisecond
+}
+
 //static __IO uint32_t  	TimingDelay;
 //static volatile uint64_t  	_micros;
 //
