@@ -1715,13 +1715,13 @@ OUTPUT(f0_blinker.elf elf32-littlearm)
  .debug_ranges  0x00000200       0x20 src\startup_stm32f0xx.o
  .debug_ranges  0x00000220       0x30 src\system_stm32f0xx.o
 
-.debug_line     0x00000000      0xf9f
+.debug_line     0x00000000      0xf9d
  .debug_line    0x00000000      0x35c Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
  .debug_line    0x0000035c      0x604 Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_rcc.o
  .debug_line    0x00000960      0x1f8 src\delay.o
- .debug_line    0x00000b58      0x220 src\main.o
- .debug_line    0x00000d78       0x7d src\startup_stm32f0xx.o
- .debug_line    0x00000df5      0x1aa src\system_stm32f0xx.o
+ .debug_line    0x00000b58      0x21e src\main.o
+ .debug_line    0x00000d76       0x7d src\startup_stm32f0xx.o
+ .debug_line    0x00000df3      0x1aa src\system_stm32f0xx.o
 
 .debug_str      0x00000000      0xd4b
  .debug_str     0x00000000      0x4ae Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_gpio.o
